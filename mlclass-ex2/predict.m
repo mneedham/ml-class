@@ -15,10 +15,17 @@ p = zeros(m, 1);
 %               You should set p to a vector of 0's and 1's
 %
 
+for i=1:m
+  prediction = sigmoid(X(i, :) * theta);
+  if(prediction >= 0.5)
+    p(i) = 1;
+  else
+    p(i) = 0;
+  endif
+end
 
 
-
-
+% if >= 0.5 then it becomes 1 else 0
 
 
 % =========================================================================
