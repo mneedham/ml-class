@@ -26,7 +26,8 @@ J = 1/m * sum(penalty0 - penalty1) + lambda/(2*m) * sum(theta(2:length(theta)) .
 grad(1) = 1/m * sum((predictions - y) .* X(:, 1));
 
 for i=2:size(theta)
-  grad(i) = 1/m * sum(((predictions - y) .* X(:, i)) + (lambda * theta)(i));
+  adjustment = (lambda * theta)(i);	
+  grad(i) = 1/m * (sum((predictions - y) .* X(:, i)) + adjustment);
 end
 
 % =============================================================
