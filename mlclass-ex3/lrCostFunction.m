@@ -36,9 +36,18 @@ grad = zeros(size(theta));
 %           grad = grad + YOUR_CODE_HERE (using the temp variable)
 %
 
+predictions = sigmoid(X * theta);
+penalty0 = -y' * log(predictions);
+penalty1 = (1-y)' * log(1 - predictions);
+costAdjustment = lambda/(2*m) * sum(theta(2:end) .* theta(2:end));
 
+J = 1/m * sum(penalty0 -penalty1) + costAdjustment; 
 
-
+grad = 1/m * X' *  (predictions -y);
+temp = theta;
+temp(1) = 0;
+temp(2:end) = (lambda/m * theta)(2:end);
+grad = grad + temp;
 
 
 

@@ -31,9 +31,17 @@ X = [ones(m, 1) X];
 %       
 
 
-
-
-
+for i=1:m
+  prediction = zeros(1, num_labels);
+  for j=1:num_labels
+    iX = X(i, :);
+    jtheta = all_theta(j, :);
+    sigme = iX * jtheta';
+    prediction(j) = sigmoid(sigme);
+  end
+  [match, ix] = max(prediction);
+  p(i) = ix; 
+end
 
 
 % =========================================================================
